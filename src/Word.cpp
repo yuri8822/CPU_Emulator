@@ -1,8 +1,5 @@
 #include "Emulator.h"
 
-int OpCode;
-int Address_Data;
-
 Word::Word()
 {
     this->OpCode = LDA;
@@ -13,4 +10,9 @@ void Word::SetWord(int OpCode, int Address_Data)
 {
     this->OpCode = OpCode;
     this->Address_Data = Address_Data;
+}
+
+void Word::Print()
+{
+    std::cout << this->OpCode << " " << this->Address_Data << std::endl;
 }

@@ -1,5 +1,9 @@
 #pragma once
 
+#include <fstream>
+#include <sstream>
+#include <vector>
+
 #include "Program.h"
 #include "RAM.h"
 #include "CPU.h"
@@ -7,7 +11,7 @@
 class Emulator
 {
 private:
-    Program Programs;
+    Program Program;
     RAM RAM;
     CPU CPU;
     int instruction;

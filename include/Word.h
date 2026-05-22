@@ -11,4 +11,5 @@ struct Word
 
     Word();
     void SetWord(int OpCode, int Address_Data);
+    void Print();
 };

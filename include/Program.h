@@ -4,11 +4,10 @@
 
 struct Program
 {
-    Word *program1;
-    Word *program2;
+    Word *program;
+    int size;
 
     Program();
-
-    Word *Program1_Data();
-    Word *Program2_Data();
+    Word *ImportProgram();
+    void PrintProgram();
 };

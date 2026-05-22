@@ -2,14 +2,17 @@
 
 Emulator::Emulator()
 {
-    RAM.Memory = Programs.Program2_Data(); // loading the program into the RAM before Start() is called
+    RAM.Memory = Program.ImportProgram(); // loading the program into the RAM before Start() is called
+    RAM.size = Program.size;
+    // Program.PrintProgram();
 }
 
 void Emulator::Start()
 {
     system("CLS");
 
-    while (PC < RAM.Size)
+
+    while (PC < RAM.size)
     {
         std::cout << "--------------BEFORE OPERATION :-\n";
         CPU.PrintRegisters(); // Printing state of registers BEFORE operation

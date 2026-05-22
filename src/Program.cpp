@@ -2,38 +2,46 @@
 
 Program::Program()
 {
-    program1 = nullptr;
-    program2 = nullptr;
+    program = nullptr;
+    size = 0;
 }
 
-Word *Program::Program1_Data()
+Word *Program::ImportProgram()
 {
-    program1 = new Word[8];
+    std::ifstream File("program.txt");
+    std::vector<std::string> Lines;
+    std::string Line;
 
-    program1[0].SetWord(LDA, 6);
-    program1[1].SetWord(ADD, 7);
-    program1[2].SetWord(STR, 6);
-    program1[3].SetWord(JMP, 1);
-    program1[4].SetWord(-1, 0);
-    program1[5].SetWord(-1, 0);
-    program1[6].SetWord(-1, 1);
-    program1[7].SetWord(-1, 1);
+    while (std::getline(File, Line))
+    {
+        size++;
+        Lines.push_back(Line);
+    }
+    
+    program = new Word[size];
 
-    return program1;
+    for (int i = 0; i < size; i++)
+    {
+        std::stringstream ss(Lines[i]);
+        std::string OC;
+        std::string AD;
+
+        std::getline(ss, OC, ' ');
+        std::getline(ss, AD, '\0');
+
+        int OpCode = std::stoi(OC);
+        int Address_Data = std::stoi(AD);
+
+        program[i].SetWord(OpCode, Address_Data);
+    }
+
+    return program;
 }
 
-Word *Program::Program2_Data()
+void Program::PrintProgram()
 {
-    program2 = new Word[8];
-
-    program2[0].SetWord(LDA, 6);
-    program2[1].SetWord(ADD, 7);
-    program2[2].SetWord(STR, 6);
-    program2[3].SetWord(HLT, 0);
-    program2[4].SetWord(-1, 0);
-    program2[5].SetWord(-1, 0);
-    program2[6].SetWord(-1, 1);
-    program2[7].SetWord(-1, 5);
-
-    return program2;
+    for (int i = 0; i < size; i++)
+    {
+        program[i].Print();
+    }
 }

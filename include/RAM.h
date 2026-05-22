@@ -5,7 +5,7 @@
 struct RAM
 {
     Word *Memory;
-    int Size;
+    int size;
 
     RAM();
 };
