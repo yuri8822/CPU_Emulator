@@ -1,6 +1,8 @@
 #pragma once
 
-#include "OpCode.h"
+#include <iostream>
+
+enum OpCode {ADD, SUB, LDA, STR, JMP, HLT};
 
 struct Word
 {
